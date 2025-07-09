@@ -25,12 +25,19 @@ class User {
             // INSERÇÃO DE DADOS NA LINGUAGEM SQL
             $sql = "INSERT INTO users (user_fullname, email, password, created_at) VALUES (:user_fullname, :email, :password, NOW())";
 
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
             // PREPARAR O BANCO DE DADOS PARA RECEBER O COMANDO ACIMA
             $stmt = $this->db->prepare($sql);
 
             // REFERENCIAR OS DADOS PASSADOS PELO COMANDO SQL COM OS PARÂMETROS DA FUNÇÃO
             $stmt->bindParam(":user_fullname", $user_fullname, PDO::PARAM_STR);
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+            $stmt->bindParam(":password", $hashedPassword, PDO::PARAM_STR);
+
             // EXECUTAR TUDO 
+
+            $stmt->execute();
 
     } catch (PDOException $error) {
             die("Erro ao registrar usuário: " . $error->getMessage());

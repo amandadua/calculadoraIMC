@@ -1,12 +1,13 @@
+
 {
     "name": "amanda/fitcalc",
     "description": "Calculadora de IMC",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Amanda\\Fitcalc\\": "fitCalc/",
             "Controller\\": "Controller/",
-            "Model\\": "Model/"
+            "Model\\": "Model/",
+            "Projetoimc\\Fitcalc\\": "fitCalc/"
         },
         "files": [
             "Config/configuration.php"
