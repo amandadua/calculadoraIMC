@@ -23,7 +23,7 @@ class User {
     public function registerUser($user_fullname, $email, $password) {
         try {
             // INSERÇÃO DE DADOS NA LINGUAGEM SQL
-            $sql = "INSERT INTO users (user_fullname, email, password, created_at) VALUES (:user_fullname, :email, :password, NOW())";
+            $sql = "INSERT INTO user (user_fullname, email, password, created_at) VALUES (:user_fullname, :email, :password, NOW())";
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
